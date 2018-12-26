@@ -22,11 +22,16 @@ Route::group([
     ], function () {
 
 
-
     Route::group(['as' => 'feed.', 'namespace' => 'Recipe'], function () {
         Route::get('/', 'FeedController@index')->name('recipes');
     });
 
+    Route::group(['as' => 'recipe.', 'namespace' => 'Recipe'], function () {
+        Route::get('/recipe/create', 'RecipesController@create')->name('create');
+        Route::get('/recipe{recipe}', 'RecipesController@show')->name('show');
+        Route::get('/recipe{recipe}/edit', 'RecipesController@edit')->name('edit');
+        Route::post('/recipe/store', 'RecipesController@store')->name('store');
+    });
 
     Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
         Route::get('/feed', 'UsersController@feed')->name('feed');

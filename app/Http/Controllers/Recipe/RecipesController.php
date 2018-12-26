@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Recipe;
 
+use App\Http\Controllers\Controller;
 use App\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class RecipeController extends Controller
+class RecipesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +26,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipes.create');
     }
 
     /**
@@ -35,7 +37,26 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+        ]);
+
+        $recipe = Recipe::create([
+            'title' => $request['title'],
+            'portion' => $request['portion'],
+            'hour' => $request['hour'],
+            'minutes' => $request['minutes'],
+            'calorie' => $request['calorie'],
+            'squirrels' => $request['squirrels'],
+            'fats' => $request['fats'],
+            'carbohydrates' => $request['carbohydrates'],
+            'status' => 'active',
+            'confirmed_recipe' => 'yeas',
+            'user_id' => Auth::id(),
+        ]);
+
+
+        return redirect()->route('recipe.show', $recipe);
     }
 
     /**
@@ -46,7 +67,7 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
+        return view('recipes.show', compact('recipe'));
     }
 
     /**
