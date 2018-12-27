@@ -11,7 +11,7 @@
     @endif
     @else
         <li class="nav-item">
-            <a class="nav-link d-flex px-md-2" href="" data-toggle="tooltip" data-placement="bottom" title="{{ __('menu.Feed') }}">
+            <a class="nav-link d-flex px-md-2" href="{{ route('user.feed') }}" data-toggle="tooltip" data-placement="bottom" title="{{ __('menu.Feed') }}">
                 <i class="fa fa-cutlery align-content-center"></i>
                 <span class="d-inline-flex d-md-none pl-2 ml-1 align-content-center">{{ __('menu.Feed') }}</span>
             </a>
@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link d-inline-flex px-md-2" href="" data-toggle="tooltip" data-placement="bottom" title="{{ __('menu.Profile') }}">
+            <a class="nav-link d-inline-flex px-md-2" href="{{ route('user.show', auth()->id()) }}" data-toggle="tooltip" data-placement="bottom" title="{{ __('menu.Profile') }}">
                 <i class="fa fa-home align-content-center d-md-none"></i>
                 <span class="d-inline-flex pl-2 align-content-center">{{ Auth::user()->name }}</span>
             </a>

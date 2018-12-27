@@ -13568,3 +13568,42 @@ a.btn:hover {
   }
 }
 
+.text-decoration-none,
+.text-decoration-none:hover {
+  text-decoration: none !important;
+  color: var(--indigo);
+}
+
+.recipe-footer-tool-icon a i,
+.recipe-footer-tool-icon button i {
+  font-size: 22px;
+}
+
+#demo {
+  --blue: #3490dc;
+  --indigo: #6574cd;
+  --purple: #9561e2;
+  --pink: #f66D9b;
+  --red: #e3342f;
+  --orange: #f6993f;
+  --yellow: #ffed4a;
+  --green: #38c172;
+  --teal: #4dc0b5;
+  --cyan: #6cb2eb;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #3490dc;
+  --secondary: #6c757d;
+  --success: #38c172;
+  --info: #6cb2eb;
+  --warning: #ffed4a;
+  --danger: #e3342f;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+.text-muted-50 {
+  color: #adadad !important;
+}
+

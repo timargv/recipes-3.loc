@@ -38,6 +38,10 @@ Route::group([
         Route::get('/id{user}', 'UsersController@show')->name('show');
         Route::get('/edit', 'UsersController@edit')->name('edit');
         Route::put('/update', 'UsersController@update')->name('update');
+
+//        Route::group(['as' => 'user.like'], function () {
+//            Route::get('/like', 'UsersController@like')->name('index');
+//        });
     });
 
 });
