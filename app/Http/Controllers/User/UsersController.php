@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Recipe;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,13 +19,15 @@ class UsersController extends Controller
 
     public function show(User $user) {
 
+        $recipes = $user->recipes()->paginate(5);
+
         if ($user == Auth::user()) {
             $user = Auth::user();
         } else {
             $user = new User();
         }
 
-        return view('user.show', compact('user'));
+        return view('user.show', compact('user', 'recipes'));
     }
 
 

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    protectd $table = 'comments'
-    protectd $fillable = ['user_id', 'reply_id', 'text', 'status'];
+    protected $table = 'comments';
+    protected $fillable = ['user_id', 'reply_id', 'text', 'status'];
 
     public function replies() {
         return $this->hasMany(self::class, 'id', 'reply_id');

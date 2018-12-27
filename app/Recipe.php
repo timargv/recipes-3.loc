@@ -27,6 +27,12 @@ class Recipe extends Model
         return $this->hasMany(ImageRecipe::class, 'recipe_id', 'id');
     }
 
+    // Все Картинки рецепта
+    public function commets()
+    {
+        return $this->hasMany(Comment::class, 'recipe_id', 'id');
+    }
+
 
     // Связь с Ингредиенты  многие ко многим
     public function ingredients()
@@ -38,4 +44,5 @@ class Recipe extends Model
             'ingredient_id'
         );
     }
+    
 }

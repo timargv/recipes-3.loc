@@ -27,4 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Все Картинки рецепта
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class, 'user_id', 'id');
+    }
 }
