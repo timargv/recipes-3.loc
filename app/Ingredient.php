@@ -8,20 +8,12 @@ class Ingredient extends Model
 {
     //
     protected $table = 'ingredients';
-    protected $fillable = ['title', 'amount', 'measure_id'];
+    protected $fillable = ['title'];
 
-    public function recipes () {
-        return $this->belongsToMany(
-            Recipe::class,
-            'recipe_ingredients',
-            'ingredient_id',
-            'recipe_id'
-        );
-    }
 
-    // Связь один к одному
-    public function measure ()
+    // Количество рецептов в амоунт
+    public function amounts()
     {
-        return $this->hasOne(Measure::class);
+        return $this->hasMany(RecipeAmountIngredient::class, 'ingredient_id', 'id');
     }
 }

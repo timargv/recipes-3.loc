@@ -33,6 +33,11 @@ Route::group([
         Route::post('/recipe/store', 'RecipesController@store')->name('store');
     });
 
+    Route::group(['as' => 'comment.', 'namespace' => 'Comment'], function () {
+        Route::get('/comment{recipe}', 'CommentController@show')->name('show');
+        Route::post('/comment/store', 'CommentController@store')->name('store');
+    });
+
     Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
         Route::get('/feed', 'UsersController@feed')->name('feed');
         Route::get('/id{user}', 'UsersController@show')->name('show');

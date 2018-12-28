@@ -20,6 +20,7 @@ class CreateRecipesTable extends Migration
             $table->integer('user_id')->default(1);
 
             $table->string('title', 255)->index();
+            $table->text('text');
 
             // Характеристики
             $table->integer('portion')->default(0);          // Порция

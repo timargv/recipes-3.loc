@@ -90,7 +90,7 @@ class User extends Authenticatable
             $url = 'storage/uploads/users/'. $this->id .'/original/';
             $path = $url . $this->avatar;
             return $path;
-        } return 'https://via.placeholder.com/400/DDDDDD/FFFFFF/';
+        } return 'https://via.placeholder.com/400/999999/FFFFFF/';
     }
 
     public function getReciperCountAttribute(){

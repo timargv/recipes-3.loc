@@ -9,7 +9,7 @@ class Recipe extends Model
     protected $table = 'recipes';
 
     protected $fillable = [
-        'title', 'user_id', 'portion', 'hour', 'minutes',
+        'title', 'user_id', 'text', 'portion', 'hour', 'minutes',
         'calorie', 'squirrels', 'fats', 'carbohydrates',
         'status', 'confirmed_recipe'];
 
@@ -27,6 +27,12 @@ class Recipe extends Model
         return $this->hasMany(ImageRecipe::class, 'recipe_id', 'id');
     }
 
+    // Количество рецептов в амоунт
+    public function amounts()
+    {
+        return $this->hasMany(RecipeAmountIngredient::class, 'recipe_id', 'id');
+    }
+
     // Все Картинки рецепта
     public function comments()
     {
@@ -39,14 +45,14 @@ class Recipe extends Model
 
 
     // Связь с Ингредиенты  многие ко многим
-    public function ingredients()
-    {
-        return $this->belongsToMany(
-            Ingredient::class,
-            'recipe_ingredients',
-            'recipe_id',
-            'ingredient_id'
-        );
-    }
+//    public function ingredients()
+//    {
+//        return $this->belongsToMany(
+//            Ingredient::class,
+//            'recipe_ingredients',
+//            'recipe_id',
+//            'ingredient_id'
+//        );
+//    }
     
 }

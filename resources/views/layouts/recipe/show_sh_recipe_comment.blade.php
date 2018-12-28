@@ -13,7 +13,8 @@
                 {{ $comment->text }}
 
             </div>
-            <a href="#" class="text-decoration-none small text-muted-50">Ответить</a>
+            <span class="text-muted-50 small pr-2">{{ $comment->created_at->diffForHumans() }}</span> <a href="#" class="text-decoration-none small text-muted-50">Ответить</a>
         </div>
     </div>
 @endforeach
+

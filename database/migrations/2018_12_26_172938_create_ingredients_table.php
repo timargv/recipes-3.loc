@@ -16,8 +16,6 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('amount')->default(0);
-            $table->integer('measure_id')->nullable()->default(0);
 //            $table->foreign('measure_id')->references('id')->on('measures');
             $table->timestamps();
         });

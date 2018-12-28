@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Recipe;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,7 +69,10 @@ class RecipesController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        $comments = $recipe->comments()
+            ->with('author', 'replies.author')
+            ->orderByDesc('created_at')->paginate(5);
+        return view('recipes.show', compact('recipe', 'comments'));
     }
 
     /**

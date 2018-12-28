@@ -3,6 +3,7 @@
 
 return [
     'Recipes' => 'Рецепты',
+    'Ingredients' => 'Ингредиенты',
     'People' => 'Авторы',
 
     'Search'        => 'Найти',

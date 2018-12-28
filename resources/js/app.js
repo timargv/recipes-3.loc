@@ -36,3 +36,8 @@ const app = new Vue({
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+$('textarea.addComment').keyup(function(){
+    $(this).height(10);
+    $(this).height(this.scrollHeight);
+});

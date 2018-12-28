@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Comment;
 
 use App\Comment;
+use App\Http\Controllers\Controller;
+use App\Recipe;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -35,7 +38,24 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $this->validate($request, [
+            'reply_id' => 'nullable|integer',
+            'text' => 'required|string|max:3000',
+        ]);
+
+
+
+        $recipe = Comment::create([
+            'text' => $request->get('text'),
+            'status' => 'active',
+            'user_id' => Auth::id(),
+            'reply_id' => $request->get('reply_id'),
+            'recipe_id' => $request->get('recipe_id')
+        ]);
+
+        return redirect()->back()->with('success', 'Комментарий Добавлен');
     }
 
     /**

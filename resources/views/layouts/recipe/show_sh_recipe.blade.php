@@ -10,7 +10,7 @@
                             <img class="rounded-circle" src="{{ $recipe->author->getAvatar() }}" alt="Card image" width="50px" height="50px">
                         </div>
                         <div class="align-self-center flex-grow-1 pl-3">
-                            <a class="d-block card-subtitle m-0 text-decoration-none h5" href="{{ route('recipe.show', $recipe->id) }}">
+                            <a class="card-subtitle m-0 text-decoration-none h5" href="{{ route('recipe.show', $recipe->id) }}">
                                 {{ $recipe->title }}
                             </a>
                             <div class="d-flex">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="recipe-comment-sh align-self-top ">
 
-                            @include('layouts.recipe.show_sh_recipe_comment', $comments = $recipe->comments)
+                            @include('layouts.recipe.show_sh_recipe_comment')
 
 
                         </div>

@@ -9,6 +9,7 @@ $factory->define(App\Recipe::class, function (Faker $faker) {
         'user_id' => $faker->numberBetween(1, 2),
 
         'title'   => $faker->text(50),
+        'text'   => $faker->realText(150),
 
         'portion' => $faker->numberBetween(1, 3),
         'hour'    => $faker->numberBetween(1, 12),
