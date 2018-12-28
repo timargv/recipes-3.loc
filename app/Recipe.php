@@ -28,9 +28,13 @@ class Recipe extends Model
     }
 
     // Все Картинки рецепта
-    public function commets()
+    public function comments()
     {
-        return $this->hasMany(Comment::class, 'recipe_id', 'id');
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getCommentCountAttribute(){
+        return $this->comments->count();
     }
 
 
