@@ -4,7 +4,7 @@
         <div class="align-self-top ml-3">
             <div class="font-weight-light" style="font-size: 13px; line-height: 18px;">
                 <span class="font-weight-bold pr-1">
-                    {{ $comment->author->name }}
+                    ID: {{ $comment->recipe_id }} - {{ $comment->author->name }}
                     @foreach($comment->replies as $reply)
                         <i class="fa fa-angle-right"></i>
                         <a href="{{ route('user.show', $reply->author) }}">{{ $reply->author->name }}</a>
@@ -13,7 +13,8 @@
                 {{ $comment->text }}
 
             </div>
-            <span class="text-muted-50 small pr-2">{{ $comment->created_at->diffForHumans() }}</span> <a href="#" class="text-decoration-none small text-muted-50">Ответить</a>
+            <span class="text-muted-50 small pr-2">{{ $comment->created_at->diffForHumans() }}</span>
+            <a href="#" data-id="{{ $comment->author->id }}" class="text-decoration-none small text-muted-50">Ответить</a>
         </div>
     </div>
 @endforeach

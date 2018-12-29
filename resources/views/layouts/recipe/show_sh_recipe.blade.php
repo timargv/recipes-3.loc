@@ -11,7 +11,7 @@
                         </div>
                         <div class="align-self-center flex-grow-1 pl-3">
                             <a class="card-subtitle m-0 text-decoration-none h5" href="{{ route('recipe.show', $recipe->id) }}">
-                                {{ $recipe->title }}
+                                ID:{{ $recipe->id }} - {{ $recipe->title }}
                             </a>
                             <div class="d-flex">
                                 <a href="{{ route('user.show', $recipe->author->id) }}" class="small text-muted font-weight-light align-self-center">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="recipe-comment-sh align-self-top ">
 
-                            @include('layouts.recipe.show_sh_recipe_comment')
+                            @include('layouts.recipe.show_sh_recipe_comment', $comments = $recipe->comments)
 
 
                         </div>

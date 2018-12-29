@@ -18,6 +18,7 @@ class CreateRecipesTable extends Migration
 
             // Автор
             $table->integer('user_id')->default(1);
+            $table->integer('category_id');
 
             $table->string('title', 255)->index();
             $table->text('text');
@@ -28,10 +29,10 @@ class CreateRecipesTable extends Migration
             $table->integer('minutes')->default(0);          // Минут
 
             // ЭНЕРГЕТИЧЕСКАЯ ЦЕННОСТЬ НА ПОРЦИЮ
-            $table->string('calorie')->nullable()->default(0);          // Калорийность
-            $table->string('squirrels')->nullable()->default(0);        // Белки - Ккал
-            $table->string('fats')->nullable()->default(0);             // Жиры - ГРАММ
-            $table->string('carbohydrates')->nullable()->default(0);    // Углеводы - ГРАММ
+            $table->float('calorie')->nullable()->default(0);          // Калорийность
+            $table->float('squirrels')->nullable()->default(0);        // Белки - Ккал
+            $table->float('fats')->nullable()->default(0);             // Жиры - ГРАММ
+            $table->float('carbohydrates')->nullable()->default(0);    // Углеводы - ГРАММ
 
 
             $table->string('status', 16)->default('active');            // Статус ВКЛ/ВЫКЛ

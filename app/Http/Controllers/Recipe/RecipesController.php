@@ -72,7 +72,11 @@ class RecipesController extends Controller
         $comments = $recipe->comments()
             ->with('author', 'replies.author')
             ->orderByDesc('created_at')->paginate(5);
-        return view('recipes.show', compact('recipe', 'comments'));
+        $ingredients = $recipe->amounts()
+            ->with('ingredient', 'recipe', 'measure')->orderByDesc('created_at')->get();
+        $images = $recipe->images()->orderByDesc('created_at')->get();
+
+        return view('recipes.show', compact('recipe', 'comments', 'ingredients', 'images'));
     }
 
     /**

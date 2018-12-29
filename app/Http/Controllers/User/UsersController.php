@@ -28,9 +28,9 @@ class UsersController extends Controller
 
 
     public function show(User $user) {
+
         $recipes = $user->recipes()->with('comments.author', 'comments.replies.author', 'author')->paginate(5);
         return view('user.show', compact('user', 'recipes'));
-
     }
 
 

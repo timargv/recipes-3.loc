@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-12 col-lg-8 px-md-3 px-0 mb-3">
+            <div class="col-md-12 col-lg-8 px-md-3 px-0 mb-3 order-12 order-md-0">
                 <div class="card border-0 shadow-sm rounded-0">
                     <div class="card-header border-0">Мои Рецепты</div>
                     <div class="card-body p-0">
@@ -18,39 +18,46 @@
 
             </div>
 
-            <div class="col-md-4 pl-md-0">
+            <div class="col-md-4 pl-md-0 pr-md-3 px-0 order-1 order-md-1">
                 <div class="card border-0 shadow-sm">
                     {{--<div class="card-header border-0"></div>--}}
-                    <div class="card-img-top px-5 pb-4 pt-5">
-                        <div class="px-4">
-                            <img src="{{ $user->getAvatar() }}" alt="Card image" class="w-100 rounded-circle" style="height: 160px;">
-                        </div>
-                    </div>
-                    <div class="card-subtitle px-3 py-4 h4 text-center font-weight-bold">
-                        @if ($user->first_name && $user->last_name) {{ $user->first_name }} {{ $user->last_name }} @else{{ $user->name }}@endif
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center mb-5">
-                            <div class="align-self-center text-center px-3">
-                                <div class="followers h4 font-weight-bold mb-0 text-monospace">1548</div>
-                                <span class="text-lowercase small text-monospace">{{ __('profile.Followers') }}</span>
-                            </div>
-                            <div class="align-self-center text-center px-3">
-                                <div class="following h4 font-weight-bold mb-0 text-monospace">1548</div>
-                                <span class="text-lowercase small text-monospace">{{ __('profile.Following') }}</span>
-                            </div>
-                            <div class="align-self-center text-center px-3">
-                                <div class="recupe-count h4 font-weight-bold mb-0 text-monospace">{{ $user->getReciperCountAttribute() }}</div>
-                                <span class="text-lowercase small text-monospace">{{ __('profile.Recipes') }}</span>
+                    <div class="row">
+                        <div class="col-4 col-md-12 pr-0 pr-md-3">
+                            <div class="card-img-top px-md-5 pb-md-4 pt-md-5">
+                                <div class="px-md-4 pl-3 pl-md-4 py-md-0 py-3">
+                                    <img src="{{ $user->getAvatar() }}" alt="Card image" class="rounded-circle" style="height: 110px;width: 100%;">
+                                </div>
                             </div>
                         </div>
+                        <div class="col-8 col-md-12">
+                            <div class="card-subtitle pl-0 px-md-3 py-4 h4 text-md-center font-weight-bold">
+                                @if ($user->first_name && $user->last_name) {{ $user->first_name }} {{ $user->last_name }} @else{{ $user->name }}@endif
+                            </div>
+                            <div class="card-body pl-0 pl-md-3 py-0 py-md-3">
+                                <div class="d-flex justify-content-start mb-5 justify-content-md-center">
+                                    <div class="align-self-center text-center px-md-3 px-1">
+                                        <div class="followers h4 font-weight-bold mb-0 text-monospace">1548</div>
+                                        <span class="text-lowercase small text-monospace">{{ __('profile.Followers') }}</span>
+                                    </div>
+                                    <div class="align-self-center text-center px-md-3 px-1">
+                                        <div class="following h4 font-weight-bold mb-0 text-monospace">1548</div>
+                                        <span class="text-lowercase small text-monospace">{{ __('profile.Following') }}</span>
+                                    </div>
+                                    <div class="align-self-center text-center px-md-3 px-1">
+                                        <div class="recupe-count h4 font-weight-bold mb-0 text-monospace">{{ $user->getReciperCountAttribute() }}</div>
+                                        <span class="text-lowercase small text-monospace">{{ __('profile.Recipes') }}</span>
+                                    </div>
+                                </div>
 
-                        @if($user->id != Auth::id())
-                            <div class="text-center mb-4">
-                                <button class="btn btn-success"><i class="text-small fa fa-plus pr-2 font-weight-light" style="font-size: 12px;"></i>Подписаться</button>
+                                @if($user->id != Auth::id())
+                                    <div class="text-center mb-4">
+                                        <button class="btn btn-success"><i class="text-small fa fa-plus pr-2 font-weight-light" style="font-size: 12px;"></i>Подписаться</button>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
+                        </div>
                     </div>
+
                 </div>
                 @if($user->id == auth()->id())
                     <a class="btn btn-outline-secondary w-100 my-3 " href="{{ route('user.edit') }}">{{ __('profile.Edit') }}</a>

@@ -9,7 +9,7 @@ class Recipe extends Model
     protected $table = 'recipes';
 
     protected $fillable = [
-        'title', 'user_id', 'text', 'portion', 'hour', 'minutes',
+        'title', 'user_id', 'category_id', 'text', 'portion', 'hour', 'minutes',
         'calorie', 'squirrels', 'fats', 'carbohydrates',
         'status', 'confirmed_recipe'];
 
@@ -20,11 +20,16 @@ class Recipe extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-
     // Все Картинки рецепта
     public function images()
     {
         return $this->hasMany(ImageRecipe::class, 'recipe_id', 'id');
+    }
+
+    // Категорие рецепта
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     // Количество рецептов в амоунт

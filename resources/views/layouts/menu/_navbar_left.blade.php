@@ -4,7 +4,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="">{{ __('menu.Recipes') }}</a>
+        <a class="nav-link" href="">{{ __('menu.Ingredients') }}</a>
     </li>
 
     <li class="nav-item">

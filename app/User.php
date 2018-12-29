@@ -35,6 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class, 'user_id', 'id');
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class, 'recipe_id', 'id');
+    }
 
     public function generatePassword($password)
     {

@@ -15,10 +15,12 @@
                                         <img class="rounded-circle" src="{{ $recipe->author->getAvatar() }}" alt="Card image" width="50px" height="50px">
                                     </div>
                                     <div class="align-self-center flex-grow-1 pl-3">
+                                        <span class="font-weight-bold h5 text-monospace text-uppercase">{{ $recipe->category->title }},</span>
                                         <a class="card-subtitle m-0 text-decoration-none h5" href="{{ route('recipe.show', $recipe->id) }}">
                                             {{ $recipe->title }}
                                         </a>
                                         <div class="d-flex">
+                                            <span class="small text-muted font-weight-light pr-1">{{ __('reciper.Author') }}</span>
                                             <a href="{{ route('user.show', $recipe->author->id) }}" class="small text-muted font-weight-light align-self-center">
                                                 @if ($recipe->author->first_name && $recipe->author->last_name) {{ $recipe->author->first_name }} {{ $recipe->author->last_name }} @else{{ $recipe->author->name }}@endif
                                             </a>
@@ -35,6 +37,11 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="card-text p-0">
+                                <div class="pt-3 px-3 ml-1">
+                                    {{ $recipe->text }}
+                                </div>
+                            </div>
                             <div class="card-body p-0">
                                 <div class="pt-3 px-md-3 ml-md-1 ml-0 px-0">
                                     <div class="card-img">
@@ -45,15 +52,11 @@
                                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                             </ol>
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img class="d-block w-100" src="https://via.placeholder.com/400x250/DDDDDD/FFFFFF/" alt="Card image">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block w-100" src="https://via.placeholder.com/400x250/DDDDDD/FFFFFF/" alt="Card image">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block w-100" src="https://via.placeholder.com/400x250/DDDDDD/FFFFFF/" alt="Card image">
-                                                </div>
+                                                @foreach($images as $key => $image)
+                                                    <div class="carousel-item @if ($key == 1) active @endif">
+                                                        <img class="d-block w-100" src="{{ $image->image }}" height="300px" alt="Card image">
+                                                    </div>
+                                                @endforeach
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,6 +70,11 @@
                                     </div>
                                     <div class="card-text">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <div class="pt-md-3 px-3 ml-1">
+                                    <div class="card-title h4 font-weight-bold my-3 pt-3">Инструкция приготовления</div>
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent p-0 border-0 py-2">
@@ -212,14 +220,20 @@
                     </div>
                     <div class="card-body">
                         <nav class="nav list-unstyled">
-                            <li class="d-flex flex-row mb-3">
-                                <div class="align-self-center">
-                                    <img class="rounded-circle" src="https://via.placeholder.com/30/DDDDDD/FFFFFF/" alt="Card image">
+                            @foreach($ingredients as $ingredient)
+                                <div class="d-flex flex-row mb-3">
+                                    <div class="align-self-center">
+                                        {{ $ingredient->ingredient->title }}
+                                    </div>
+                                    <div class="align-self-center">
+                                        {{ $ingredient->amount }}
+                                    </div>
+                                    <div class="align-self-center">
+                                        {{ $ingredient->measure->title }}
+                                    </div>
                                 </div>
-                                <div class="align-self-center flex-grow-1">
-
-                                </div>
-                            </li>
+                                <div class="clearfix w-100"></div>
+                            @endforeach
                         </nav>
                     </div>
                 </div>
