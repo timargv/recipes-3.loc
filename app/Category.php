@@ -9,8 +9,9 @@ class Category extends Model
 {
     use NodeTrait;
     //
+
     protected $table = 'categories';
-    protected $fillable = ['title', 'parent_id'];
+    protected $fillable = ['title', 'parent_id', 'description', 'status', 'icon', 'image'];
 
     // Все Картинки рецепта
     public function recipes()

@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('description')->nullable();                        // Описание для категории
+            $table->string('status')->default('active');                   // Статус Категории N-отключен Y-включено
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
             NestedSet::columns($table);
@@ -31,6 +33,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('Categories');
     }
 }

@@ -21,7 +21,7 @@ class CreateCommentsTable extends Migration
 
             $table->text('text', 3000);
 
-            $table->string('status')->default('acitve');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
 

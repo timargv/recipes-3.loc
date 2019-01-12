@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         //
         User::create([
+            'role' => 'admin',
             'name' => 'timargv',
             'email' => 'tima.rgv@mail.ru',
             'first_name' => 'Тимур',
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
             'remember_token' => str_random(10)
         ]);
         User::create([
+            'role' => 'user',
             'name' => 'user1',
             'email' => 'bloodwoman121993@mail.ru',
             'first_name' => 'Вика',

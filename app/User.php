@@ -11,23 +11,31 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public const STATUS_WAIT = 'wait';
+    public const STATUS_ACTIVE = 'active';
+
+    public const ROLE_USER = 'user';
+    public const ROLE_MODERATOR = 'moderator';
+    public const ROLE_ADMIN = 'admin';
+
     protected $fillable = [
-        'name', 'last_name', 'first_name', 'email', 'password',
+        'name', 'last_name', 'first_name', 'email', 'password', 'role'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public static function rolesList(): array
+    {
+        return [
+            self::ROLE_USER => 'User',
+            self::ROLE_MODERATOR => 'Moderator',
+            self::ROLE_ADMIN => 'Admin',
+        ];
+    }
 
     // Все Картинки рецепта
     public function recipes()
@@ -98,6 +106,11 @@ class User extends Authenticatable
 
     public function getReciperCountAttribute(){
         return $this->recipes->count();
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
     }
 
 }

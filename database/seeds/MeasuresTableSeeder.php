@@ -12,6 +12,34 @@ class MeasuresTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(\App\Measure::class, 50)->create();
+        $measures = [
+            ['title' => 'грамм'],
+            ['title' => 'банка'],
+            ['title' => 'головка'],
+            ['title' => 'грамм'],
+            ['title' => 'зубчик'],
+            ['title' => 'килограмм'],
+            ['title' => 'кусок'],
+            ['title' => 'литр'],
+            ['title' => 'миллилитр'],
+            ['title' => 'на кончике ножа'],
+            ['title' => 'по вкусу'],
+            ['title' => 'пучок'],
+            ['title' => 'стакан'],
+            ['title' => 'столовая ложка'],
+            ['title' => 'чайная ложка'],
+            ['title' => 'штука'],
+            ['title' => 'щепотка'],
+            ['title' => 'стебель'],
+            ['title' => 'дэш'],
+            ['title' => 'веточка'],
+        ];
+
+
+        foreach($measures as $measure)
+        {
+            \App\Measure::create($measure);
+        }
+//        factory(\App\Measure::class, 50)->create();
     }
 }
